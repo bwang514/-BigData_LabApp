@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/98fc340f24ed7a3e975f400e58449c6af1ee9288/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a1ed98e01bd58976d80c062fd0ea2968a1ff68a1">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_ca0b05f9f4910d2959d9f500941782e95efa7f73/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/c294440c6e07c742f9b2c8282bdf530fdb0206fa/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b327fbe2fad414bc38cf0ce8f7efe1a38f572837">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_7fa7a206196221de61fc409d5ca25bb4bbcfc1b7/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/009dda9e16896f371feb8e777ed505fc57ba5255/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6b6f292b8b951dcf2ecf2b20853e3eabc7d65c48">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_68627a3dd7c66faadd933b3856c6db12b8fc49fb/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/a2cd28cdc99e426e42dbbe1a2ff857dccbb584fd/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="fbb3885c40e431cd2b0dc69c0cab2bf6d5da7b43">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_4b69a643e93e8615914efe0244afbb3ffc071a06/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/68cf4c454f957d0afec5d9e5ef91e34c2925d3a3/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a972970c8beddb69c198f61f3fc55f0606a7dfe3">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_1bfb26939bfe6934bb2f5e8a9da622afa3f82efd/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/9a04cdb237df25626330cd13e51b8fd861d44c3d/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="85299bf1924dde0200109a58033c5ef84ecb6991">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_202956c2a90f0dcfd8bd2fd5497f0fac70de39a6/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/2da95278880e8cc6ba5153b5e7f6108079cff565/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e9b2cfdfd59b03643f1e240668275378b96615a8">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_c35f3bd4f8b0587669b212692569e7dd7ba76cdf/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/eb758a68a17f5ee043d1bebc5b9ce0334fd37d5c/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="9ff04cc3470178a44512624036751a803418c2ca">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_af7ea4b276a4ed7d7071bd15c0e88bf163ba5bee/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/9ce4f8f545065d6aea045070ac0e7b219884498c/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4438b1a7848a7c571122ba618aa1304514aabee6">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_f692026de0977e90e9985e26bf2a6fa434ef6464/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/190732a7505c2cd313d7fb94bb0013d3c1edabfe/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="289cad663c288ce965463cb9ece8b35cc7de0fac">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_028c2aee4f53c1d55181be08d73bb7309148d444/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/d81d1607c743708e65606c515734759c3c7d4594/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c81df6bd515398ebe45089b0b16c55752a131f6a">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_d076f46ef1c8927488aeb0284150c70119dfbf18/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/c22d18d4ede09ac4954ef91312b327d58569866d/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0b8e087da59c0b062c33f49a335e59f907086da2">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_9c2d3338689127097cc5d624335b167f06643191/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/5a419bb8ab5187795a045e46d3253ef74a3085d3/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b4671be3d1288bf4e5f527cd33e42909fbe4ecc6">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_a1bdfae3d118a578731db4e6d24079452f90a0ec/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/a16a0f81d0fdebc4bd27c6a888bb610d387155bc/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="910c013c511f752c4bbe24c5f492f669f4a3ccc0">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_f254c85b3a03114177f4346495b9c23868deeefd/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/080d519b19e10cce4986c92475b8ca7a5469c8a7/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="679251204de40ace98776a6f4e3a649c27e3d89f">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_e32454df209f36324aac286615600bf8c0cd44ae/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/ed62d88b700723ec00eeb38a41ff37293815ed3b/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3f8f779a22cbb4c4d0759467a4f1011bb5252970">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_d60c834f595ea8c9a8b3a81a73fa1379a55b0139/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/a4ef82de5bcc3dc77fd429615cfedf8b34224dc0/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ec9104b53aee77dfcfd2fe1c4add23ff7c4df55f">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_6eb773e8b67a349b066e754c38fdb459ffcbb8d1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/9f807645a38c8bd707cf4bd1a21eae599a12afea/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2d3035050a075484cbf2e33f1ce1f779bae4d451">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_618bf7b8782eb94431c5214b21db54da99b64f29/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/678b5abc1e584be6e208d9cfb0deca5965b0707b/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="122ec9237acd8a57d974b9d529987f1ee6ca5aea">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_153ee8234fac63c4dc449c4f5528b51e345fee0d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/4f81b8369405e2112b3f9becc0f88598638ec9d0/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a30aea7df545072ad3c06f56b2efc13e67222140">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_e215cbbea4f5e52ebba45fb31f95bdc623d18f57/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/a5babf8ffb784d1d52f90631b8ccf1c75180851b/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e3234cd25e23069abd48ecd2117bc0e8011bf45a">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_d967d19fca7950a0902d4a2a6318a832511e6c5a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/e22086f72711a49a08efe22e8c84eaf812b31938/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="363a20f1d25336e827dd24020f2ecdc42d62638f">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_f8704ee9ca223f6b90b738db438756d5102c322d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ce67a5fad0d37d5cc0ed9d73fbd5f32e1eb37e90">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_10719125d9105c299aaa0a6423f1c5ab5c526d71/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/a7da6784d23bba01a99abfdc207400c83eb8391d/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="266570862e5792ef3c51143a8b8593cf54fac68d">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_afb3073552c4ab1ed0ba0d3f20f4838093226c21/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/5bd204e0bd04ae23e2794127388b737eea211324/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7fd91ec2730fdaa82906aad32a3f3d3e574bae56">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_7595d6394ced236072f30a1c62a798ac782eae78/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/14e29fd9f9967d06685132b897ed54a83c967d7a/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="03df48d3713661d66ad024b1e406259a4c26fcac">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_1ebe2ed9821269698f8b4d63c516d589a5c571bd/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/06b56382c2030ac1abd36f3f93f6bf5756d9c65f/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3daa7a9c9009fd386872a84c177a76979bdcafd6">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_7fd3d8f8fa041e81ca69c0875ea75a01fd6a88f3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/1967309086a944e639f8daac037864e7032cb4fe/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="16afe57c1d7f8165d107c7806ce7b0c71de87159">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_22d1a7d1bf15879d7f8c84c65198e24a291c1348/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/77a8ad14ab25bade2134e580317a9e5a0e63dd7f/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f2d240dd085626f03f759c41d628a0c8b63e491f">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_0b62d4ffdf3c65c9f61e329d806d02ce5bd5c5f4/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/32fa41f38bad62f283b3a55b4f7b349693832192/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="190a642ba16d1421296a4d794606279b80039c59">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_c7d72a195a5912417d604c66050ca9d16bee44ad/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/10d6b707f6b1c0854fa9908dfb8dafbcf0380a34/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="00d358528c5a8731a6e19bca910cbb3fd755ee31">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_480b85aa69232ff24a27134fabeeca5ca16b79ff/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/0ce18eec1e72022da2b9cbe624f89caa45aa8a69/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="5f47ede9561595584dca71104baa0fecb36dda87">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_69d572f34a8befdf91f022847dd16be0dee29efd/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/5e305c53c4882f9545dbe2866056bd62b321b62b/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="9dae58326f6f6a515022468cce56dd04ec3b9fdb">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_0d7b163b4f6191efc27437695b416dcaf7a023a2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/9c128b1cd73e3b432ee8f38181e3c1b6080e9801/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ca851be26ff89f5b32cc222cee98139fb3fac830">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_3bd79c5ea9020de606e0fe08368e48a433e0c6b8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/8c00cd48e8ee9b097823a59686ac829b425db740/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a2537b11ae24b42172d34e2a613fc0b903c56158">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_5cd242b8e566f0661c43d5e1df50e66dbc226d6b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/d3d917b659e2daa4ec1c91b513214162072313b6/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e56f31b23ddb067f95f01255295167db7c798612">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_d8f05adf1d3ccbb031d859ff7fb78c4046167ea1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/4a180c20646ebe63e0710c02d3abc07c459ae270/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="15e59454416c6341bd3ed2533b585cd340682dd1">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_5334ae25dcdc324e7fd0e97a3f60e5c1178b3d71/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/a9af1ab87313eee4a4d5d2e2318562340945aac7/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="74ac7cbcf0de4a88e59612dc3a9e3f9e71acb4ca">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_869def52d047f3722322a4d55cccca26f5a8411e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/c294440c6e07c742f9b2c8282bdf530fdb0206fa/output/jars/libs/internal_impl-24.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b6763651ec29b4c95e7bbe63fc393ffcc8c4c2c5">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.0.0_f094de66d0b0a146d8692fcae934a0ed89bb4962/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/0de448e17c6c72bd3791d3af3c806ae929e768a7/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="5ffe8867f51cfc726e9fb21db1e5b6962ebf25a0">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_2f702acd6c3f9c6cb07816e63824fb7ff0f5c46e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/c5f6cfe7761970285184ade3346175b534f3c334/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ee5304fd374e0b4ebf6b42d4037fbfb2c5336511">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_3cd59b46a7b55de589ec2a4c3294e5b324ad6573/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/5533e8fde51a2905bbfe322be2c7a1278da5d456/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="cef85cfc7df40e29fbea58844dd4c1e7d0b15542">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_672b6fa90bab5ef3b16d245a069ed595e0d79306/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/c02f6196c6b04fe454323e6a75f30f68c51e46c9/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="20a3c4e355150c15c13dd58045d43ad0c717d916">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_9a570d525199c07ef446b16b8abb14af04f02bd5/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/c2c8578cda192e8d30fcdb9e5f3e8c66e8f7f247/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="50e35ae101a679c4c8ef3dda075b1df9d5d947d9">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_d34e9e93036b2b33a2ebae64a8225f0039514061/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/c5e086ba0947347557ca51f021ea374dad2345cd/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c61641e333fa88da21758bab8cc28ee16604b05f">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_d153585a8521b2535c75197dcb749ec5f088c169/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/92135631e169c4ea41e8f62e75e832a99984e67d/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0b53c4b90654b67ee3892a8e2e7b819c083ab7a6">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_ec61fc4ba10a9e76d995d34c17d77a82425e79ac/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_bc0375ee3c25036511f2b04839dd92ff200854f7/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/908ea58228beb5458161f69bcc62e082d9fe17ec/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="734e80dffea7bd76c18ae256822a124c30d85850">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_c307030d255bd4c12584b4df393b483b5a59dd8b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/ecd3ce22baa9fd6c55efab43f24ab482b11bb61c/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="055eed08c9cff50cac0db69c74c4d9ff7aef3d84">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_3358de9153996f99c80afce80f780a1d836550ad/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/andremachado/.android/build-cache/4810ff75bde46207c8a4732cf7dc3a2acb64b941/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a7a04d6b7c01e569a285fa627cf64f5b05295906">
+        <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_fa3cb3e586ba915f77948d4c48bb814d11366586/classes.dex" />
+    </item>
+
+</items>
