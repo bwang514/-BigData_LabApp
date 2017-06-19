@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Debug;
 import android.support.v7.app.AppCompatActivity;
 
 import android.os.AsyncTask;
@@ -38,9 +39,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.looper.andremachado.cleanwater.R;
 import com.looper.andremachado.cleanwater.utils.AppUtils;
+
+import static com.looper.andremachado.cleanwater.utils.AppUtils.baseUrl;
 
 /**
  * A login screen that offers login via username/password.
@@ -52,6 +58,8 @@ public class LoginActivity extends AppCompatActivity {
      * Keep track of the login task to ensure we can cancel it if requested.
      */
     private UserLoginTask mAuthTask = null;
+
+    private String pk, username, first_name, last_name, email, token;
 
     // UI references.
     private AutoCompleteTextView mUsernameView;
@@ -225,7 +233,7 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         protected Boolean doInBackground(Void... params) {
 
-            String url = AppUtils.baseUrl + "rest-auth/login/";
+            String url = baseUrl + "rest-auth/login/";
             try {
                 RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
                 JSONObject jsonBody = new JSONObject();
@@ -237,11 +245,18 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
 
+                        Log.d("TAG", "Response: " + response);
+
                         try {
                             //TODO Handle Response 200 and etc
                             JSONObject json = new JSONObject(response);
 
                             String key = json.getString("key");
+
+                            token = key;
+                            Log.d("TAG","Atualizei");
+
+                            Log.d("TAG","Save in SP: " + key);
 
 
                             SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.user_token), MODE_PRIVATE).edit();
@@ -249,6 +264,76 @@ public class LoginActivity extends AppCompatActivity {
                             editor.putString(getString(R.string.user_token), key);
                             editor.apply();
 
+
+
+                            //========================================
+                            // Instantiate the RequestQueue.
+                            RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+                            String url = baseUrl + "rest-auth/user/";
+
+                            // Request a string response from the provided URL.
+                            StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                                    new Response.Listener<String>() {
+                                        @Override
+                                        public void onResponse(String response) {
+                                            try {
+                                                JSONObject json = new JSONObject(response);
+                                                pk = json.getString("pk");
+                                                username = json.getString("username");
+                                                first_name = json.getString("first_name");
+                                                last_name = json.getString("last_name");
+                                                email = json.getString("email");
+
+                                                Log.d("TAG", "test: " + pk+ username+ first_name+ last_name+ email);
+
+
+
+                                                    Intent mainIntent = new Intent(getApplicationContext(), CameraActivity.class);
+
+                                                    mainIntent.putExtra("pk",pk);
+                                                    mainIntent.putExtra("first_name",first_name);
+                                                    mainIntent.putExtra("last_name",last_name);
+                                                    mainIntent.putExtra("username",username);
+                                                    mainIntent.putExtra("email",email);
+
+                                                    getApplicationContext().startActivity(mainIntent);
+                                                    LoginActivity.this.finish();
+
+
+                                            } catch (JSONException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    }, new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    NetworkResponse networkResponse = error.networkResponse;
+
+                                    if(networkResponse == null){
+                                        //networkResponseDialog();
+                                    }
+
+                                    if (networkResponse != null && networkResponse.statusCode == HttpURLConnection.HTTP_FORBIDDEN) {
+                                        // HTTP Status Code: 401 Unauthorized
+                                        Log.e("TAG", "ErrSplash: 403");
+                                    }
+                                }
+                            }
+                            ) {
+                                @Override
+                                public Map<String, String> getHeaders() throws AuthFailureError {
+                                    Map<String, String>  params = new HashMap<String, String>();
+                                    params.put("Content-Type", "application/json");
+                                    params.put("Authorization", "Token " + token);
+
+                                    return params;
+                                }
+                            };
+                            // Add the request to the RequestQueue.
+                            Log.d("TAG", "Iniciei o pedido");
+                            queue.add(stringRequest);
+
+                            //==========================================================
 
                         } catch (JSONException e) {
                             //TODO Handle 400 and etc errors
@@ -276,6 +361,8 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
 
+
+
                     @Override
                     protected Response<String> parseNetworkResponse(NetworkResponse response) {
                         try {
@@ -302,13 +389,27 @@ public class LoginActivity extends AppCompatActivity {
             mAuthTask = null;
             showProgress(false);
 
+/*
             if (success) {
                 Intent mainIntent = new Intent(getApplicationContext(), CameraActivity.class);
+
+                mainIntent.putExtra("pk",pk);
+                mainIntent.putExtra("first_name",first_name);
+                mainIntent.putExtra("last_name",last_name);
+                mainIntent.putExtra("username",username);
+                mainIntent.putExtra("email",email);
+
                 getApplicationContext().startActivity(mainIntent);
                 LoginActivity.this.finish();
 
             } else {
 
+                mPasswordView.setError(getString(R.string.error_incorrect_password));
+                mPasswordView.requestFocus();
+            }
+            */
+
+            if(!success){
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
             }

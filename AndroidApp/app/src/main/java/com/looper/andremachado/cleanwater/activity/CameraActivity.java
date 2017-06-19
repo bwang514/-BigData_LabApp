@@ -26,10 +26,20 @@ public class CameraActivity extends BaseActivityLocation {
     public Context context;
     SurfaceView cameraPreview;
 
+    private String pk, username, first_name, last_name, email;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
+
+        Intent intent = getIntent();
+
+        pk = intent.getStringExtra("pk");
+        first_name = intent.getStringExtra("first_name");
+        last_name = intent.getStringExtra("last_name");
+        email = intent.getStringExtra("email");
+        username = intent.getStringExtra("username");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -68,7 +78,6 @@ public class CameraActivity extends BaseActivityLocation {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
 
@@ -81,6 +90,13 @@ public class CameraActivity extends BaseActivityLocation {
         switch (item.getItemId()) {
             case R.id.action_settings:
                 Intent mainIntent = new Intent(CameraActivity.this, ProfileActivity.class);
+
+                mainIntent.putExtra("pk",pk);
+                mainIntent.putExtra("first_name",first_name);
+                mainIntent.putExtra("last_name",last_name);
+                mainIntent.putExtra("username",username);
+                mainIntent.putExtra("email",email);
+
                 CameraActivity.this.startActivity(mainIntent);
                 CameraActivity.this.finish();
                 return true;

@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
@@ -50,10 +51,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static android.Manifest.permission.READ_CONTACTS;
+import static com.looper.andremachado.cleanwater.utils.AppUtils.baseUrl;
 
 /**
  * A login screen that offers login via email/password.
@@ -72,6 +77,8 @@ public class RegisterActivity extends AppCompatActivity{
     private EditText mPasswordView2;
     private View mProgressView;
     private View mRegisterFormView;
+
+    private String pk, username, first_name, last_name, email, token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -160,6 +167,18 @@ public class RegisterActivity extends AppCompatActivity{
             focusView = mUsernameView;
             cancel = true;
         }
+
+
+        if (TextUtils.isEmpty(password1)) {
+            mPasswordView1.setError(getString(R.string.error_field_required));
+            focusView = mPasswordView1;
+            cancel = true;
+        } else if (!password1.equals(password2)) {
+            mPasswordView2.setError(getString(R.string.error_different_password));
+            focusView = mPasswordView2;
+            cancel = true;
+        }
+
 
         if (cancel) {
             // There was an error; don't attempt login and focus the first
@@ -268,10 +287,86 @@ public class RegisterActivity extends AppCompatActivity{
 
                             String key = json.getString("key");
 
+                            Log.d("TAG2", "Token: " + key);
+
                             SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.user_token), MODE_PRIVATE).edit();
 
                             editor.putString(getString(R.string.user_token), key);
                             editor.apply();
+
+                            token = key;
+
+
+                            //========================================
+                            // Instantiate the RequestQueue.
+                            RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+                            String url = baseUrl + "rest-auth/user/";
+
+                            // Request a string response from the provided URL.
+                            StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                                    new Response.Listener<String>() {
+                                        @Override
+                                        public void onResponse(String response) {
+                                            try {
+                                                JSONObject json = new JSONObject(response);
+                                                pk = json.getString("pk");
+                                                username = json.getString("username");
+                                                first_name = json.getString("first_name");
+                                                last_name = json.getString("last_name");
+                                                email = json.getString("email");
+
+                                                Log.d("TAG", "test: " + pk+ username+ first_name+ last_name+ email);
+
+
+
+                                                Intent mainIntent = new Intent(getApplicationContext(), CameraActivity.class);
+
+                                                mainIntent.putExtra("pk",pk);
+                                                mainIntent.putExtra("first_name",first_name);
+                                                mainIntent.putExtra("last_name",last_name);
+                                                mainIntent.putExtra("username",username);
+                                                mainIntent.putExtra("email",email);
+
+                                                getApplicationContext().startActivity(mainIntent);
+                                                RegisterActivity.this.finish();
+
+
+                                            } catch (JSONException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    }, new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    NetworkResponse networkResponse = error.networkResponse;
+
+                                    if(networkResponse == null){
+                                        //networkResponseDialog();
+                                    }
+
+                                    if (networkResponse != null && networkResponse.statusCode == HttpURLConnection.HTTP_FORBIDDEN) {
+                                        // HTTP Status Code: 401 Unauthorized
+                                        Log.e("TAG", "ErrSplash: 403");
+                                    }
+                                }
+                            }
+                            ) {
+                                @Override
+                                public Map<String, String> getHeaders() throws AuthFailureError {
+                                    Map<String, String>  params = new HashMap<String, String>();
+                                    params.put("Content-Type", "application/json");
+                                    params.put("Authorization", "Token " + token);
+
+                                    return params;
+                                }
+                            };
+                            // Add the request to the RequestQueue.
+                            Log.d("TAG", "Iniciei o pedido");
+                            queue.add(stringRequest);
+
+                            //==========================================================
+
+
 
                         } catch (JSONException e) {
                             //TODO Handle 400 and etc errors
@@ -326,7 +421,16 @@ public class RegisterActivity extends AppCompatActivity{
             showProgress(false);
 
             if (success) {
-                finish();
+                Intent mainIntent = new Intent(getApplicationContext(), CameraActivity.class);
+
+                mainIntent.putExtra("pk",pk);
+                mainIntent.putExtra("first_name",first_name);
+                mainIntent.putExtra("last_name",last_name);
+                mainIntent.putExtra("username",username);
+                mainIntent.putExtra("email",email);
+
+                getApplicationContext().startActivity(mainIntent);
+                RegisterActivity.this.finish();
             } else {
                 mPasswordView1.setError(getString(R.string.error_incorrect_password));
                 mPasswordView1.requestFocus();

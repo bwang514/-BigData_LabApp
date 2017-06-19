@@ -3,6 +3,7 @@ package com.looper.andremachado.cleanwater.activity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -32,12 +33,15 @@ import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.looper.andremachado.cleanwater.R;
+import com.looper.andremachado.cleanwater.SplashActivity;
 import com.looper.andremachado.cleanwater.utils.AppUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -45,18 +49,36 @@ public class ProfileActivity extends AppCompatActivity {
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
-    //private UserUpdateTask mAuthTask = null;
+    private UserUpdateTask mUpdateTask = null;
+    private UserLogoutTask mLogoutTask = null;
+
+
+    private String pk, username, first_name, last_name, email;
+    private String token;
+
 
     // UI references.
-    private AutoCompleteTextView mUsernameView;
-    private EditText mPasswordView;
-    private View mProgressView;
-    private View mLoginFormView;
+    private TextView mUsernameTextView;
+    private TextView mMailTextView;
+    private EditText mFirstNameView;
+    private EditText mLastNameView;
+    private View mUpdateFormView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        Intent intent = getIntent();
+
+        pk = intent.getStringExtra("pk");
+        first_name = intent.getStringExtra("first_name");
+        last_name = intent.getStringExtra("last_name");
+        email = intent.getStringExtra("email");
+        username = intent.getStringExtra("username");
+
+        SharedPreferences sharedPref = this.getSharedPreferences(getString(R.string.user_token), Context.MODE_PRIVATE);
+        token = sharedPref.getString(getString(R.string.user_token), null);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -70,191 +92,148 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), CameraActivity.class);
-                //intent.putExtra("photo" , photo);
+
+                intent.putExtra("pk",pk);
+                intent.putExtra("first_name",first_name);
+                intent.putExtra("last_name",last_name);
+                intent.putExtra("username",username);
+                intent.putExtra("email",email);
+
                 startActivity(intent);
             }
         });
 
-/*
+
         // Set up the login form.
-        mUsernameView = (AutoCompleteTextView) findViewById(R.id.login_username);
+        mUsernameTextView = (TextView) findViewById(R.id.profile_username_textview);
+        mUsernameTextView.setText(username);
+        mMailTextView = (TextView) findViewById(R.id.profile_email_textview);
+        mMailTextView.setText(email);
 
-        mPasswordView = (EditText) findViewById(R.id.login_password);
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.login || id == EditorInfo.IME_NULL) {
-                    attemptLogin();
-                    return true;
-                }
-                return false;
-            }
-        });
+        mFirstNameView = (EditText) findViewById(R.id.update_first_name);
+        mFirstNameView.setText(first_name);
+        mLastNameView = (EditText) findViewById(R.id.update_last_name);
+        mLastNameView.setText(last_name);
 
-        Button mUsernameSignInButton = (Button) findViewById(R.id.username_sign_in_button);
-        mUsernameSignInButton.setOnClickListener(new View.OnClickListener() {
+
+        Button mUsernameUpdateButton = (Button) findViewById(R.id.update_user_button);
+        mUsernameUpdateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                attemptLogin();
+                attemptUpdate();
             }
         });
 
-        Button mRegisterButton = (Button) findViewById(R.id.register_redirect_button);
-        mRegisterButton.setOnClickListener(new View.OnClickListener() {
+        Button mLogoutButton = (Button) findViewById(R.id.logout_button);
+        mLogoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                registerRedirect();
+                attemptLogout();
             }
         });
 
 
-        mLoginFormView = findViewById(R.id.login_form);
-        mProgressView = findViewById(R.id.login_progress);*/
+        mUpdateFormView = findViewById(R.id.update_form);
 
     }
 
-
-/*
-    private void registerRedirect() {
-        Log.i("TAG","Register button clicked");
-        Intent mainIntent = new Intent(this, RegisterActivity.class);
-        this.startActivity(mainIntent);
-        this.finish();
-    }
-
-
-    private void attemptLogin() {
-        if (mAuthTask != null) {
+    private void attemptUpdate() {
+        if (mUpdateTask != null) {
             return;
         }
 
         // Reset errors.
-        mUsernameView.setError(null);
-        mPasswordView.setError(null);
+        mFirstNameView.setError(null);
+        mLastNameView.setError(null);
 
         // Store values at the time of the login attempt.
-        String username = mUsernameView.getText().toString();
-        String password = mPasswordView.getText().toString();
+        String firstName = mFirstNameView.getText().toString();
+        String lastName = mLastNameView.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
 
-        // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
-            mPasswordView.setError(getString(R.string.error_invalid_password));
-            focusView = mPasswordView;
+        // Check for a valid first name.
+        if (TextUtils.isEmpty(firstName)) {
+            mFirstNameView.setError(getString(R.string.error_field_required));
+            focusView = mFirstNameView;
+            cancel = true;
+        } else if (!isValid(firstName)) {
+            mFirstNameView.setError(getString(R.string.error_invalid_name));
+            focusView = mFirstNameView;
             cancel = true;
         }
 
         // Check for a valid username.
-        if (TextUtils.isEmpty(username)) {
-            mUsernameView.setError(getString(R.string.error_field_required));
-            focusView = mUsernameView;
+        if (TextUtils.isEmpty(lastName)) {
+            mLastNameView.setError(getString(R.string.error_field_required));
+            focusView = mLastNameView;
             cancel = true;
-        } else if (!isUsernameValid(username)) {
-            mUsernameView.setError(getString(R.string.error_invalid_username));
-            focusView = mUsernameView;
+        } else if (!isValid(lastName)) {
+            mLastNameView.setError(getString(R.string.error_invalid_name));
+            focusView = mLastNameView;
             cancel = true;
         }
 
         if (cancel) {
-            // There was an error; don't attempt login and focus the first
-            // form field with an error.
             focusView.requestFocus();
         } else {
-            // Show a progress spinner, and kick off a background task to
-            // perform the user login attempt.
-            showProgress(true);
-            mAuthTask = new UserUpdateTask(username, password);
-            mAuthTask.execute((Void) null);
+            mUpdateTask = new UserUpdateTask(firstName, lastName);
+            mUpdateTask.execute((Void) null);
         }
     }
 
-    private boolean isUsernameValid(String username) {
-        //TODO: Replace this with your own logic
-        //return email.contains("@");
-        return true;
-    }
-
-    private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
-        return password.length() > 4;
-    }
-
-
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
-    private void showProgress(final boolean show) {
-        // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
-        // for very easy animations. If available, use these APIs to fade-in
-        // the progress spinner.
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
-            int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
-
-            mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-            mLoginFormView.animate().setDuration(shortAnimTime).alpha(
-                    show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-                }
-            });
-
-            mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-            mProgressView.animate().setDuration(shortAnimTime).alpha(
-                    show ? 1 : 0).setListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-                }
-            });
-        } else {
-            // The ViewPropertyAnimator APIs are not available, so simply show
-            // and hide the relevant UI components.
-            mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-            mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
+    private void attemptLogout() {
+        if (mLogoutTask != null) {
+            return;
         }
+        mLogoutTask = new UserLogoutTask();
+        mLogoutTask.execute((Void) null);
+
     }
-
-
-
 
     public class UserUpdateTask extends AsyncTask<Void, Void, Boolean> {
 
-        private final String mUsername;
-        private final String mPassword;
+        private final String mFirstName;
+        private final String mLastName;
 
-        UserUpdateTask(String username, String password) {
-            mUsername = username;
-            mPassword = password;
+        UserUpdateTask(String firstName, String lastName) {
+            mFirstName = firstName;
+            mLastName = lastName;
         }
 
         @Override
         protected Boolean doInBackground(Void... params) {
 
-            String url = AppUtils.baseUrl + "rest-auth/login/";
+            String url = AppUtils.baseUrl + "rest-auth/user/";
             try {
                 RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
                 JSONObject jsonBody = new JSONObject();
-                jsonBody.put("username", mUsername);
-                jsonBody.put("password", mPassword);
+                jsonBody.put("first_name", mFirstName);
+                jsonBody.put("last_name", mLastName);
+                jsonBody.put("username", username);
                 final String requestBody = jsonBody.toString();
 
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+                StringRequest stringRequest = new StringRequest(Request.Method.PUT, url, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
 
                         try {
                             //TODO Handle Response 200 and etc
                             JSONObject json = new JSONObject(response);
+                            first_name = json.getString("first_name");
+                            last_name = json.getString("last_name");
 
-                            String key = json.getString("key");
+                            Intent mainIntent = new Intent(getApplicationContext(), CameraActivity.class);
 
+                            mainIntent.putExtra("pk",pk);
+                            mainIntent.putExtra("first_name",first_name);
+                            mainIntent.putExtra("last_name",last_name);
+                            mainIntent.putExtra("username",username);
+                            mainIntent.putExtra("email",email);
 
-                            SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.user_token), MODE_PRIVATE).edit();
-
-                            editor.putString(getString(R.string.user_token), key);
-                            editor.apply();
-
+                            getApplicationContext().startActivity(mainIntent);
+                            ProfileActivity.this.finish();
 
                         } catch (JSONException e) {
                             //TODO Handle 400 and etc errors
@@ -292,6 +271,15 @@ public class ProfileActivity extends AppCompatActivity {
                             return Response.error(new ParseError(e));
                         }
                     }
+
+                    @Override
+                    public Map<String, String> getHeaders() throws AuthFailureError {
+                        Map<String, String>  params = new HashMap<String, String>();
+                        params.put("Content-Type", "application/json");
+                        params.put("Authorization", "Token " + token);
+
+                        return params;
+                    }
                 };
 
                 requestQueue.add(stringRequest);
@@ -305,27 +293,115 @@ public class ProfileActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(final Boolean success) {
-            mAuthTask = null;
-            showProgress(false);
+            mUpdateTask = null;
 
             if (success) {
-                Intent mainIntent = new Intent(getApplicationContext(), CameraActivity.class);
-                getApplicationContext().startActivity(mainIntent);
-                ProfileActivity.this.finish();
 
             } else {
-
-                mPasswordView.setError(getString(R.string.error_incorrect_password));
-                mPasswordView.requestFocus();
+                mFirstNameView.setError(getString(R.string.error_invalid_name));
+                mFirstNameView.requestFocus();
             }
         }
 
         @Override
         protected void onCancelled() {
-            mAuthTask = null;
-            showProgress(false);
+            mUpdateTask = null;
         }
     }
 
-*/
+    public class UserLogoutTask extends AsyncTask<Void, Void, Boolean> {
+
+
+        UserLogoutTask() {
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+
+            String url = AppUtils.baseUrl + "rest-auth/logout/";
+
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                JSONObject jsonBody = new JSONObject();
+                final String requestBody = jsonBody.toString();
+
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.user_token), MODE_PRIVATE).edit();
+                        editor.putString(getString(R.string.user_token), "");
+                        editor.apply();
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("VOLLEY", error.toString());
+                    }
+                }) {
+                    @Override
+                    public String getBodyContentType() {
+                        return "application/json; charset=utf-8; ";
+                    }
+
+                    @Override
+                    public Map<String, String> getHeaders() throws AuthFailureError {
+                        Map<String, String>  params = new HashMap<String, String>();
+                        params.put("Content-Type", "application/json");
+                        params.put("Authorization", "Token " + token);
+
+                        return params;
+                    }
+
+
+                    @Override
+                    public byte[] getBody() throws AuthFailureError {
+                        try {
+                            return requestBody == null ? null : requestBody.getBytes("utf-8");
+                        } catch (UnsupportedEncodingException uee) {
+                            VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s", requestBody, "utf-8");
+                            return null;
+                        }
+                    }
+
+                    @Override
+                    protected Response<String> parseNetworkResponse(NetworkResponse response) {
+                        try {
+                            String json = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
+
+                            return Response.success(json, HttpHeaderParser.parseCacheHeaders(response));
+                        } catch (Exception e) {
+                            return Response.error(new ParseError(e));
+                        }
+                    }
+                };
+
+                requestQueue.add(stringRequest);
+
+
+            return true;
+        }
+
+        @Override
+        protected void onPostExecute(final Boolean success) {
+            mUpdateTask = null;
+
+            if (success) {
+                Intent mainIntent = new Intent(getApplicationContext(), SplashActivity.class);
+                getApplicationContext().startActivity(mainIntent);
+                ProfileActivity.this.finish();
+
+            } else {
+            }
+        }
+
+        @Override
+        protected void onCancelled() {
+            mUpdateTask = null;
+        }
+    }
+
+    private boolean isValid(String str){
+        return true;
+    }
+
+
 }

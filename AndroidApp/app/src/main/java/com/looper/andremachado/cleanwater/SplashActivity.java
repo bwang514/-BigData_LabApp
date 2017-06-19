@@ -33,13 +33,17 @@ import java.util.Map;
 
 import static java.lang.Thread.sleep;
 import android.Manifest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class SplashActivity extends Activity {
 
     /** Duration of wait **/
     private int SPLASH_DISPLAY_LENGTH = 2000;
     private boolean isTokenValid = false;
     private final String baseUrl = "http://10.0.2.2:8000/";
-    private volatile boolean exitSplash = false;
+    private String pk, username, first_name, last_name, email;
 
     /** Called when the activity is first created. */
     @Override
@@ -53,7 +57,7 @@ public class SplashActivity extends Activity {
         SharedPreferences sharedPref = this.getSharedPreferences(getString(R.string.user_token), Context.MODE_PRIVATE);
         final String token = sharedPref.getString(getString(R.string.user_token), null);
 
-        //Log.d("TAG", "TOKEN: "+ token);
+        Log.d("TAG", "TOKEN: "+ token);
         //final String token = "fdf7a15f142d9633a005b209473266aa5ae2112";
 
         setContentView(R.layout.activity_splash);
@@ -68,7 +72,19 @@ public class SplashActivity extends Activity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Log.d("TAG", "Msg: " + response);
+                        try {
+                            JSONObject json = new JSONObject(response);
+                            pk = json.getString("pk");
+                            username = json.getString("username");
+                            first_name = json.getString("first_name");
+                            last_name = json.getString("last_name");
+                            email = json.getString("email");
+
+                            Log.d("TAG", "test: " + pk+ username+ first_name+ last_name+ email);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
                         isTokenValid = true;
                         startMenuActivity();
                     }
@@ -84,10 +100,9 @@ public class SplashActivity extends Activity {
 
                     if (networkResponse != null && networkResponse.statusCode == HttpURLConnection.HTTP_FORBIDDEN) {
                         // HTTP Status Code: 401 Unauthorized
-                        Log.e("TAG", "Err: 403");
+                        Log.e("TAG", "ErrSplash: 403");
                         startMenuActivity();
                     }
-                   // Log.e("TAG", "Err: "+networkResponse.statusCode);
                     isTokenValid = false;
                 }
             }
@@ -104,8 +119,9 @@ public class SplashActivity extends Activity {
             // Add the request to the RequestQueue.
             queue.add(stringRequest);
         }
-
-        //startMenuActivity();
+        else {
+            startMenuActivity();
+        }
     }
 
     private void networkResponseDialog() {
@@ -141,12 +157,20 @@ public class SplashActivity extends Activity {
                 }
 
                 if(!isTokenValid) {
+                    Log.d("TAG", "LOGIN INTENT");
                     Intent mainIntent = new Intent(SplashActivity.this, LoginActivity.class);
                     SplashActivity.this.startActivity(mainIntent);
                     SplashActivity.this.finish();
                 }
                 else{
                     Intent mainIntent = new Intent(SplashActivity.this, CameraActivity.class);
+
+                    mainIntent.putExtra("pk",pk);
+                    mainIntent.putExtra("first_name",first_name);
+                    mainIntent.putExtra("last_name",last_name);
+                    mainIntent.putExtra("username",username);
+                    mainIntent.putExtra("email",email);
+
                     SplashActivity.this.startActivity(mainIntent);
                     SplashActivity.this.finish();
                 }
