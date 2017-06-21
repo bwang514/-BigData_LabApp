@@ -41,7 +41,7 @@ public class SplashActivity extends Activity {
 
     /** Duration of wait **/
     private int SPLASH_DISPLAY_LENGTH = 2000;
-    private boolean isTokenValid = false;
+    private boolean isTokenValid = true;
     private final String baseUrl = "http://10.0.2.2:8000/";
     private String pk, username, first_name, last_name, email;
 
@@ -61,6 +61,8 @@ public class SplashActivity extends Activity {
         //final String token = "fdf7a15f142d9633a005b209473266aa5ae2112";
 
         setContentView(R.layout.activity_splash);
+
+        //startMenuActivity();
 
         if(token!=null){
             // Instantiate the RequestQueue.
@@ -122,6 +124,7 @@ public class SplashActivity extends Activity {
         else {
             startMenuActivity();
         }
+
     }
 
     private void networkResponseDialog() {

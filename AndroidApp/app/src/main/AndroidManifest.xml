@@ -41,7 +41,8 @@
             android:name=".activity.RegisterActivity"
             android:label="@string/title_activity_register" />
         <activity android:name=".activity.CameraActivity" />
-        <activity android:name=".activity.ProfileActivity"></activity>
+        <activity android:name=".activity.ProfileActivity" />
+        <activity android:name=".activity.ConfirmationActivity"></activity>
     </application>
 
 </manifest>

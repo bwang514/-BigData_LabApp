@@ -7,6 +7,7 @@ import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.SurfaceView;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.gms.vision.CameraSource;
@@ -55,7 +56,10 @@ public class QRCodeReader {
         cameraSource.stop();
     }
 
-    public void setProcessor(final TextView txtResult){
+    public void setProcessor(final TextView txtResult, final Button button){
+
+        final boolean[] detected = {false};
+
         barcodeDetector.setProcessor(new Detector.Processor<Barcode>() {
             @Override
             public void release() {
@@ -67,6 +71,10 @@ public class QRCodeReader {
                 final SparseArray<Barcode> qrcodes = detections.getDetectedItems();
                 if(qrcodes.size() != 0)
                 {
+                    if(!detected[0]) button.setClickable(true);
+
+                    detected[0] = true;
+
                     txtResult.post(new Runnable() {
                         @Override
                         public void run() {

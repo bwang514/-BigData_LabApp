@@ -205,7 +205,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="ce67a5fad0d37d5cc0ed9d73fbd5f32e1eb37e90">
+        sha1="00b4e5101341e0d7d93090835f26fdee5a4f393d">
         <dex dex="/Users/andremachado/Desktop/AndroidApp/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_10719125d9105c299aaa0a6423f1c5ab5c526d71/classes.dex" />
     </item>
     <item
