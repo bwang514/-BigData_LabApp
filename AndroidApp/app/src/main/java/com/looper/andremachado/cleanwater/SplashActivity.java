@@ -26,6 +26,7 @@ import com.android.volley.toolbox.Volley;
 import com.looper.andremachado.cleanwater.activity.CameraActivity;
 import com.looper.andremachado.cleanwater.activity.LoginActivity;
 import com.looper.andremachado.cleanwater.permission.PermissionManager;
+import com.looper.andremachado.cleanwater.utils.AppUtils;
 
 import java.net.HttpURLConnection;
 import java.util.HashMap;
@@ -41,8 +42,8 @@ public class SplashActivity extends Activity {
 
     /** Duration of wait **/
     private int SPLASH_DISPLAY_LENGTH = 2000;
-    private boolean isTokenValid = true;
-    private final String baseUrl = "http://10.0.2.2:8000/";
+    private boolean isTokenValid = false;
+    //private final String baseUrl = "http://10.0.2.2:8000/";
     private String pk, username, first_name, last_name, email;
 
     /** Called when the activity is first created. */
@@ -67,7 +68,7 @@ public class SplashActivity extends Activity {
         if(token!=null){
             // Instantiate the RequestQueue.
             RequestQueue queue = Volley.newRequestQueue(this);
-            String url = baseUrl + "rest-auth/user/";
+            String url = AppUtils.baseUrl + "rest-auth/user/";
 
             // Request a string response from the provided URL.
             StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
@@ -99,10 +100,15 @@ public class SplashActivity extends Activity {
                     if(networkResponse == null){
                         networkResponseDialog();
                     }
-
-                    if (networkResponse != null && networkResponse.statusCode == HttpURLConnection.HTTP_FORBIDDEN) {
+                    else if (networkResponse != null && networkResponse.statusCode == HttpURLConnection.HTTP_FORBIDDEN) {
                         // HTTP Status Code: 401 Unauthorized
                         Log.e("TAG", "ErrSplash: 403");
+                        isTokenValid = false;
+                        startMenuActivity();
+                    }
+                    else{
+                        Log.e("TAG", "Other Error");
+                        isTokenValid = false;
                         startMenuActivity();
                     }
                     isTokenValid = false;

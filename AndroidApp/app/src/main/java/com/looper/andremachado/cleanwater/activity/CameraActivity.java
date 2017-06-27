@@ -95,7 +95,7 @@ public class CameraActivity extends BaseActivityLocation {
             }
         });
         //TODO Uncomment
-        //mSendDataButton.setClickable(false);
+        mSendDataButton.setClickable(false);
 
 
 
@@ -133,8 +133,8 @@ public class CameraActivity extends BaseActivityLocation {
         boolean cancel = false;
         View focusView = null;
 
-        //String qrCodeId = txtResult.getText().toString();
-        String qrCodeId = "Hardcoded test";
+        String qrCodeId = txtResult.getText().toString();
+        //String qrCodeId = "Hardcoded test";
 
         if (qrCodeId.equals("QRReader")) {
             Log.d("TAG2","Error2");
@@ -182,13 +182,14 @@ public class CameraActivity extends BaseActivityLocation {
                 mainIntent.putExtra("username",username);
                 mainIntent.putExtra("email",email);
 
-                CameraActivity.this.startActivity(mainIntent);
+                startActivity(mainIntent);
                 CameraActivity.this.finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
+
 
 
 
@@ -203,8 +204,8 @@ public class CameraActivity extends BaseActivityLocation {
         super.locationFetched(mLocal, oldLocation, time, locationProvider);
         this.latitude = mLocal.getLatitude();
         this.longitude = mLocal.getLongitude();
-        Log.d("TAG2","Latitude: "+latitude);
-        Toast.makeText(getApplication(), "TAG: Lat : " + mLocal.getLatitude() + " Lng : " + mLocal.getLongitude(), Toast.LENGTH_SHORT).show();
+        //Log.d("TAG2","Latitude: "+latitude);
+        //Toast.makeText(getApplication(), "TAG: Lat : " + mLocal.getLatitude() + " Lng : " + mLocal.getLongitude(), Toast.LENGTH_SHORT).show();
         if(mLocal.getAltitude() == 0.0 && mLocal.getLongitude() == 0.0){
             Toast.makeText(context, R.string.not_found, Toast.LENGTH_SHORT).show();
         }else{
@@ -304,14 +305,15 @@ public class CameraActivity extends BaseActivityLocation {
             if (success) {
                 Intent mainIntent = new Intent(getApplicationContext(), ConfirmationActivity.class);
 
-                mainIntent.putExtra("pk",pk);
-                mainIntent.putExtra("first_name",first_name);
-                mainIntent.putExtra("last_name",last_name);
-                mainIntent.putExtra("username",username);
-                mainIntent.putExtra("email",email);
+                mainIntent.putExtra("pk","1");
+                mainIntent.putExtra("first_name","test");
+                mainIntent.putExtra("last_name","test");
+                mainIntent.putExtra("username","test");
+                mainIntent.putExtra("email","test");
 
-                getApplicationContext().startActivity(mainIntent);
+                startActivity(mainIntent);
                 CameraActivity.this.finish();
+
 
             } else {
 

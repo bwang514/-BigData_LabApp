@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -86,12 +87,12 @@ public class ProfileActivity extends AppCompatActivity {
         toolbar.setTitle("Title");
 
 
-        toolbar.setNavigationIcon(R.drawable.common_google_signin_btn_icon_dark);
+        toolbar.setNavigationIcon(R.drawable.backbtn);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), CameraActivity.class);
+                Intent intent = new Intent(ProfileActivity.this, CameraActivity.class);
 
                 intent.putExtra("pk",pk);
                 intent.putExtra("first_name",first_name);
@@ -232,7 +233,7 @@ public class ProfileActivity extends AppCompatActivity {
                             mainIntent.putExtra("username",username);
                             mainIntent.putExtra("email",email);
 
-                            getApplicationContext().startActivity(mainIntent);
+                            startActivity(mainIntent);
                             ProfileActivity.this.finish();
 
                         } catch (JSONException e) {
@@ -385,8 +386,8 @@ public class ProfileActivity extends AppCompatActivity {
             mUpdateTask = null;
 
             if (success) {
-                Intent mainIntent = new Intent(getApplicationContext(), SplashActivity.class);
-                getApplicationContext().startActivity(mainIntent);
+                Intent mainIntent = new Intent(ProfileActivity.this, SplashActivity.class);
+                startActivity(mainIntent);
                 ProfileActivity.this.finish();
 
             } else {

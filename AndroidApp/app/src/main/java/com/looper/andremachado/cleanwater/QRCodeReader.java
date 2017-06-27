@@ -2,6 +2,7 @@ package com.looper.andremachado.cleanwater;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.graphics.PorterDuff;
 import android.os.Vibrator;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
@@ -71,9 +72,6 @@ public class QRCodeReader {
                 final SparseArray<Barcode> qrcodes = detections.getDetectedItems();
                 if(qrcodes.size() != 0)
                 {
-                    if(!detected[0]) button.setClickable(true);
-
-                    detected[0] = true;
 
                     txtResult.post(new Runnable() {
                         @Override
@@ -81,6 +79,14 @@ public class QRCodeReader {
                             txtResult.setText(qrcodes.valueAt(0).displayValue);
                         }
                     });
+
+                    if(!detected[0]) {
+                        button.setClickable(true);
+                        button.getBackground().setColorFilter(0xffa4ed9e, PorterDuff.Mode.MULTIPLY);
+                        button.setBackgroundColor(0xffa4ed9e);
+                    }
+
+                    detected[0] = true;
                 }
             }
         });

@@ -10,7 +10,7 @@ import android.net.NetworkInfo;
 
 public class AppUtils {
 
-    public static String baseUrl = "http://10.0.2.2:8000/";
+    public static String baseUrl = "http://ec2-34-225-145-95.compute-1.amazonaws.com:8000/";
 
 
     public static boolean isInternetAvailable(Context mContext) {

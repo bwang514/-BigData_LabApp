@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 
 import com.looper.andremachado.cleanwater.R;
 
@@ -26,18 +27,10 @@ public class ConfirmationActivity extends AppCompatActivity {
         email = intent.getStringExtra("email");
         username = intent.getStringExtra("username");
 
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        toolbar.setTitle("Title");
-
-
-        toolbar.setNavigationIcon(R.drawable.common_google_signin_btn_icon_dark);
-
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        Button mBackButton = (Button) findViewById(R.id.back_button_success);
+        mBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), CameraActivity.class);
 
                 intent.putExtra("pk",pk);

@@ -287,7 +287,7 @@ public class RegisterActivity extends AppCompatActivity{
 
                             String key = json.getString("key");
 
-                            Log.d("TAG2", "Token: " + key);
+                            //Log.d("TAG2", "Token: " + key);
 
                             SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.user_token), MODE_PRIVATE).edit();
 
@@ -327,7 +327,7 @@ public class RegisterActivity extends AppCompatActivity{
                                                 mainIntent.putExtra("username",username);
                                                 mainIntent.putExtra("email",email);
 
-                                                getApplicationContext().startActivity(mainIntent);
+                                                startActivity(mainIntent);
                                                 RegisterActivity.this.finish();
 
 
@@ -429,7 +429,7 @@ public class RegisterActivity extends AppCompatActivity{
                 mainIntent.putExtra("username",username);
                 mainIntent.putExtra("email",email);
 
-                getApplicationContext().startActivity(mainIntent);
+                startActivity(mainIntent);
                 RegisterActivity.this.finish();
             } else {
                 mPasswordView1.setError(getString(R.string.error_incorrect_password));

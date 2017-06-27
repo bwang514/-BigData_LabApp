@@ -288,7 +288,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-                                                    Intent mainIntent = new Intent(getApplicationContext(), CameraActivity.class);
+                                                    Intent mainIntent = new Intent(LoginActivity.this, CameraActivity.class);
 
                                                     mainIntent.putExtra("pk",pk);
                                                     mainIntent.putExtra("first_name",first_name);
@@ -296,7 +296,7 @@ public class LoginActivity extends AppCompatActivity {
                                                     mainIntent.putExtra("username",username);
                                                     mainIntent.putExtra("email",email);
 
-                                                    getApplicationContext().startActivity(mainIntent);
+                                                    startActivity(mainIntent);
                                                     LoginActivity.this.finish();
 
 
